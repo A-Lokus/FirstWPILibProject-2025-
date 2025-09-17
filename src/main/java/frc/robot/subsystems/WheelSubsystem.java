@@ -9,6 +9,7 @@ import com.ctre.phoenix6.hardware.TalonFX;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
+/** A wheel subsystem that hopefully does something */
 public class WheelSubsystem extends SubsystemBase {
   // Use Bill Pugh Singleton Pattern for efficient lazy initialization (thread-safe !)
       private static class WheelSubsystemHolder {
