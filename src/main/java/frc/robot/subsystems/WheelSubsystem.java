@@ -5,7 +5,9 @@
 package frc.robot.subsystems;
 
 import com.ctre.phoenix6.hardware.TalonFX;
+import com.ctre.phoenix6.hardware.CANcoder;
 
+import edu.wpi.first.math.util.Units;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
@@ -22,15 +24,25 @@ public class WheelSubsystem extends SubsystemBase {
           return WheelSubsystemHolder.INSTANCE;
       }
       
-      int CAN_ID = 6;
-      TalonFX krakenMotor = new TalonFX(CAN_ID);
+      int DRIVE_ID1 = 6;
+      int TURN_ID1 = 7; 
+      int TURNENCODER_ID1 = 8;
+      TalonFX drivingMotor = new TalonFX(DRIVE_ID1);
+      TalonFX turningMotor = new TalonFX(TURN_ID1);
+      CANcoder turningEncoder = new CANcoder(TURNENCODER_ID1);
       
-      private WheelSubsystem() {
+      public WheelSubsystem() {
           super("WheelSubsystem");
       }
       
-      public void setSpeed(double speed){
-          krakenMotor.set(speed);
+      public void setDriveSpeed(double speed){
+          drivingMotor.set(speed);
+      }
+      public void setTurnSpeed(double speed){
+        turningMotor.set(speed);
+      }
+      public double getTurningPosition(){
+        return Units.radiansToDegrees(turningEncoder.getAbsolutePosition().getValueAsDouble());
       }
   
       @Override
