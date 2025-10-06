@@ -24,12 +24,13 @@ public class WheelSubsystem extends SubsystemBase {
           return WheelSubsystemHolder.INSTANCE;
       }
       
+      String CAN_BUS_NAME = "ctre";
       int DRIVE_ID1 = 6;
       int TURN_ID1 = 7; 
       int TURNENCODER_ID1 = 8;
-      TalonFX drivingMotor = new TalonFX(DRIVE_ID1);
-      TalonFX turningMotor = new TalonFX(TURN_ID1);
-      CANcoder turningEncoder = new CANcoder(TURNENCODER_ID1);
+      TalonFX drivingMotor = new TalonFX(DRIVE_ID1,CAN_BUS_NAME);
+      TalonFX turningMotor = new TalonFX(TURN_ID1,CAN_BUS_NAME);
+      CANcoder turningEncoder = new CANcoder(TURNENCODER_ID1,CAN_BUS_NAME);
       
       public WheelSubsystem() {
           super("WheelSubsystem");
